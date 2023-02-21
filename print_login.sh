@@ -6,12 +6,12 @@
 # Purpose: Prints the login history of users on this computer.
 
 # Main
-   all_logins() {
-        last
-    }
+   user=$(whoami)
 
-    print_all_logins=all_logins
+   get_login_history() {
+        last $1
+   }
 
-    $print_all_logins
+    get_login_history $user
 
 # End
