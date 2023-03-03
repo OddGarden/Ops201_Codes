@@ -15,6 +15,25 @@ opt=""
 # Functions
 repeat() {
     read -p "Search Again? " search_again
+    if [[ $search_again != "yes" ]]; then 
+        echo "Exiting now.."
+        exit
+    fi
+}
+
+create_new() {
+     if [[ $1 == "1" ]]; then 
+        touch $2
+        echo "File Created"
+        repeat
+    elif [[ $1 == "2" ]]; then 
+        mkdir $2
+        echo "Directory Created"
+        repeat
+    else 
+        echo "You have selected to exit  OR did not provide the correct option. Exiting now.."
+        exit
+    fi
 }
 
 # Arays
@@ -34,21 +53,9 @@ create=("Create File" "Create Directory" "Exit")
         else 
             echo "This file or directory does not exist."
             read -p "Do you want to  1) ${create[0]},  2) ${create[1]}, 3) ${create[2]}" opt
-            if [[ $opt == "1" ]]; then 
-                touch $name
-                echo "File Created"
-                repeat
-            elif [[ $opt == "2" ]]; then 
-                mkdir $name
-                echo "Directory Created"
-                repeat
-            else 
-                echo "You have selected to exit  OR did not provide the correct option. Exiting now.."
-                exit
-            fi
+            create_new $opt $name
         fi
     done
 
    
-
 # End
