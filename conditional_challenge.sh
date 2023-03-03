@@ -22,6 +22,7 @@ create=("Create File" "Create Directory" "Exit")
 
 # Main
 
+
     while [[ $search_again == "yes" ]]; do
         read -p "What file or directory do you want to search for: " name
         if [ -d "$name" ]; then
@@ -31,10 +32,8 @@ create=("Create File" "Create Directory" "Exit")
             echo "File Exists"
             repeat
         else 
-            
             echo "This file or directory does not exist."
-            echo "Do you want to  1) ${create[0]},  2) ${create[1]}, 3) ${create[2]}"
-            read opt
+            read -p "Do you want to  1) ${create[0]},  2) ${create[1]}, 3) ${create[2]}" opt
             if [[ $opt == "1" ]]; then 
                 touch $name
                 echo "File Created"
@@ -47,12 +46,9 @@ create=("Create File" "Create Directory" "Exit")
                 echo "You have selected to exit  OR did not provide the correct option. Exiting now.."
                 exit
             fi
-            
         fi
-      
     done
 
    
 
-  
 # End
