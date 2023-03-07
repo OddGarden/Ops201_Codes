@@ -26,5 +26,9 @@
    # Network adapter
    echo "Network Component Summary: "
    sudo lshw -c network 
+
+   # BIOS information
+   echo "BIOS Information:"
+   sudo dmidecode -t bios | grep -v "Handle" | grep -v "#" | grep -v "SMBIOS"
     
 # End
