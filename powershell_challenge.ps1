@@ -29,4 +29,6 @@ Get-EventLog -LogName System -Newest 20
  
 # Print to the screen all sources of the 500 most recent entries in the System event log. Ensure that the full lines are displayed (get rid of the … and show the entire text).
 
+Get-EventLog -LogName System -Source *  -Newest 500 | Format-Table -Property Index, Time, EntryType, Source, InstanceID, Message -Wrap
+
 # End 
